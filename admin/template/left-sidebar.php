@@ -16,7 +16,7 @@
                     <p>Users</p>
                     <hr>
                     <ul>
-                        <li><a href="all-User.php">All User</a></li>
+                        <li><a href="all-user.php">All User</a></li>
                         <li><a href="add-new-user.php">Add New User</a></li>
                     </ul>
                 </div>
