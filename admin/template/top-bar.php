@@ -1,5 +1,8 @@
+<?php
+    $user = $_SESSION['username'];
+?>
 <td><h2>Project Management</h2></td>
 <td align="right">
-    <span>John Doe</span>
-    <a href="../">Logout</a>
+    <span><?php echo $user; ?></span>
+    <a href="/WebTechProject/logOut.php">Logout</a>
 </td>

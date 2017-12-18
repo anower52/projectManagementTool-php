@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php 
+session_start();
+    echo'<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,20 +8,16 @@
 </head>
 <body>
 <table width="100%" frame="box">
-    <tr>
-        <?php
-        include "template/top-bar.php";
-        ?>
-    </tr>
-    <tr>
-        <?php
-        include "template/left-sidebar.php";
-        ?>
-        <td>
+    <tr>';
+        include "template/top-bar.php"  ;     
+    echo '</tr>
+    <tr>';
+        include "template/left-sidebar.php"  ;     
+        echo '<td>
             <fieldset>
                 <legend><b>USER | CREATE</b></legend>
                 <br/>
-                <form>
+                <form action="" method="post">
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="100"></td>
@@ -27,25 +25,35 @@
                             <td width="230"></td>
                             <td></td>
                         </tr>
+
+
                         <tr>
-                            <td>User Name</td>
+                            <td>Name</td>
                             <td>:</td>
-                            <td><input name="username" type="text" value=""></td>
+                            <td><input name="name" type="text" required></td>
                             <td></td>
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>
                         <tr>
-                            <td>Name</td>
+                            <td>User Name</td>
                             <td>:</td>
-                            <td><input name="name" type="text" value=""></td>
+                            <td><input name="username" type="text" required></td>
                             <td></td>
                         </tr>
+                        <tr><td colspan="4"><hr /></td></tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>:</td>
+                            <td><input name="passwordText" type="password" maxlength="6" required></td>
+                            <td></td>
+                        </tr>
+                        
                         <tr><td colspan="4"><hr /></td></tr>
                         <tr>
                             <td>Email</td>
                             <td>:</td>
                             <td>
-                                <input name="email" type="text" value="">
+                                <input name="email" type="text" required>
                                 <abbr title="hint: sample@example.com"><b>i</b></abbr>
                             </td>
                             <td></td>
@@ -55,9 +63,9 @@
                             <td>Gender</td>
                             <td>:</td>
                             <td>
-                                <input name="gender" type="radio">Male
-                                <input name="gender" type="radio">Female
-                                <input name="gender" type="radio">Other
+                                <input name="gender" type="radio" value="Male">Male
+                                <input name="gender" type="radio" value="Female">Female
+                                <input name="gender" type="radio" value="Other">Other
                             </td>
                             <td></td>
                         </tr>
@@ -66,27 +74,20 @@
                             <td valign="top">Date of Birth</td>
                             <td valign="top">:</td>
                             <td>
-                                <input name="dob" type="text" value="">
-                                <font size="2"><i>(dd/mm/yyyy)</i></font>
+                                <input name="dob" type="date" required>
                             </td>
                             <td></td>
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>
                         <tr>
-                            <td>Picture</td>
-                            <td>:</td>
-                            <td><input type="file"></td>
-                            <td></td>
-                        </tr>
-                        <tr><td colspan="4"><hr /></td></tr>
-                        <tr>
-                            <td>Role</td>
+                            <td>Designation</td>
                             <td>:</td>
                             <td>
-                                <select>
-                                    <option></option>
-                                    <option>Admin</option>
-                                    <option>User</option>
+                                <select name="designation">
+                                    <option>Select</option>
+                                    <option>Project Manager</option>
+                                    <option>Developer</option>
+                                    <option>QA</option>
                                 </select>
                             </td>
                             <td></td>
@@ -96,8 +97,8 @@
                             <td>Status</td>
                             <td>:</td>
                             <td>
-                                <select>
-                                    <option></option>
+                                <select name="Status">
+                                    <option>Select</option>
                                     <option >Active</option>
                                     <option>Pending</option>
                                     <option>Blocked</option>
@@ -113,10 +114,80 @@
             </fieldset>
         </td>
 
-    </tr>
-    <?php
+    </tr>';
     include "template/footer.php";
-    ?>
-</table>
+
+    echo '</table>
 </body>
-</html>
+</html>';
+    
+    include("../data/db_connector.php");
+    
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        try
+        {
+            $na = $_POST['name'];
+            $email = $_POST['email'];
+            $un = $_POST['username'];
+            $pass = $_POST['passwordText'];
+            $gen = $_POST['gender'];
+            $dob = $_POST['dob'];
+            $desig = $_POST['designation'];
+            $sta = $_POST['Status'];
+
+            if(preg_match('/^[a-zA-Z ]+$/', $na))
+            {
+                if(preg_match('/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/', $email))
+                {
+                    if(preg_match('$^[a-zA-Z0-9_.-]*$', $un))
+                    {
+                        
+                        if($gen!=NULL)
+                        {
+                            //echo $na.'<br>'.$email.'<br>'.$un.'<br>'.$gen.'<br>'.$dob.'<br>'.$desig.'<br>'.$sta;
+                            $sqlQuery = "INSERT INTO user_info(Name, UserEmail, UserName, DoB, Designation, Status, Gender) VALUES ('".$na."','".$email."','".$un."','".$dob."','".$desig."','".$sta."','".$gen."')";
+                            $sqlQuery2 = "Insert Into log_in(UserName,Password, UserType) Values ('".$un."','".$pass."','".$desig."')";
+
+                            if (mysqli_query($conn ,$sqlQuery))
+                            {
+                                if(mysqli_query($conn, $sqlQuery2))
+                                {
+                                    echo "User has been added";
+                                    mysqli_close($conn);
+                                    //header("location: all-user.php");
+                                }
+                                else
+                                {
+                                    echo "Error.User hasn't been added";
+                                }                               
+                            }
+                            else {
+                                echo "Error.User hasn't been added";
+                            }
+                        }
+                        else
+                        {
+                            echo 'Gender Error';
+                        }
+                    }
+                    else
+                    {
+                        echo 'User Name Error';
+                    }
+                }
+                else
+                {
+                    echo 'email Error';
+                }
+            }
+            else
+            {
+                echo 'Error';
+            }
+        }
+        catch (Exception $e)
+        {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+    }

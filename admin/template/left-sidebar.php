@@ -6,9 +6,6 @@
                     <p>Account</p>
                     <hr>
                     <ul>
-                        <li><a href="dashboard.php">Dashboard</a></li>
-                        <li><a href="view-profile.php">View profile</a></li>
-                        <li><a href="edit-profile.php">Edit profile</a></li>
                         <li><a href="change-password.php">Change Password</a></li>
                     </ul>
                 </div>

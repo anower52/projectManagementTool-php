@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +9,13 @@
 <table width="100%" frame="box">
     <tr>
         <?php
+        session_start();
         include "template/top-bar.php";
         ?>
     </tr>
     <tr>
         <?php
         include "template/left-sidebar.php";
-        include "template/home-latest.php";
         ?>
 
     </tr>
