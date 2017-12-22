@@ -54,7 +54,6 @@
                 </form>
             </fieldset>
         </td>
-
     </tr>
     <?php
     include "template/footer.php";

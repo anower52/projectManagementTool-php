@@ -57,7 +57,7 @@
                     </table>
                     <hr />
                     <input type="submit" value="ADD">
-                    <a href="search.html">Back to Search</a>
+                    <a href="viewAssignProject.php">Back to Assign Project</a>
                 </form>
             </fieldset>
         </td>

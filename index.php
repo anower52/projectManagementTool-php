@@ -99,6 +99,11 @@
                 $_SESSION['userType'] = "Project Manager";
                 header("location: Project Manager/index.php");
             }
+            elseif($row["UserType"]=="Developer")
+            {
+                $_SESSION['userType'] = "Developer";
+                header("location: Developer/index.php");
+            }
          
         }
         

@@ -21,6 +21,7 @@
                     <p>User</p><hr>
                     <ul>
                         <li><a href="assignUser.php">Assign User</a></li>
+                        <li><a href="viewAssignProject.php">View Assign Project</a></li>
                     </ul>
                 </div>
                 <div>
@@ -28,6 +29,7 @@
                     <hr>
                     <ul>
                         <li><a href="addTask.php">Add Task</a></li>
+                        <li><a href="viewTask.php">View Task</a></li>
                     </ul>
                 </div>
                 <div>

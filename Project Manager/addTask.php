@@ -58,7 +58,7 @@
                         <tr>
                             <td>Description</td>
                             <td>:</td>
-                            <td><input name="name" type="text" value=""></td>
+                            <td><textarea rows="4" cols="50"></textarea></td>
                             <td></td>
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>
@@ -87,7 +87,7 @@
                     </table>
                     <hr />
                     <input type="submit" value="ADD">
-                    <a href="search.html">Back to Search</a>
+                    <a href="viewTask.php">Back to Task</a>
                 </form>
             </fieldset>
         </td>

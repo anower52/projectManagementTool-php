@@ -44,7 +44,7 @@
                         <tr>
                             <td>Description</td>
                             <td>:</td>
-                            <td><input name="name" type="text" value=""></td>
+                            <td><textarea rows="4" cols="50"></textarea></td>
                             <td></td>
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>

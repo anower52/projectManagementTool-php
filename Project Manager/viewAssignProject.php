@@ -24,9 +24,9 @@
                         <table width="100%" cellspacing="0" border="1" cellpadding="5">
                             <br/><br/>
                             <tr>
-                                <th align="left">COMMENT</th>
-                                <th align="left">BY</th>
-                                <th align="left">DATE TIME</th>
+                                <th align="left">PROJECT NAME</th>
+                                <th align="left">RESOURCE PERSON</th>
+                                <th align="left">DESIGNATION</th>
                                 <th colspan="3"></th>
                             </tr>
                             <tr>
@@ -54,7 +54,7 @@
                                 <td width="45"><a href="delete.html">Delete</a></td>
                             </tr>
                         </table><br/>
-                        <a href="addComment.php">Add Comments</a>
+                        <a href="assignUser.php">Assign User</a>
                         <br/><br/>
                 </form>
             </fieldset>
@@ -65,4 +65,4 @@
     ?>
 </table>
 </body>
-</htm
+</html>
