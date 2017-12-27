@@ -153,9 +153,9 @@ session_start();
 
                             if (mysqli_query($conn ,$sqlQuery))
                             {
-                                echo "User has been added";
+                                 echo "User has been added";
                                 mysqli_close($conn);
-                                header('location:all-user.php');
+//                                header('Location: all-user.php');
                             }
                             else {
                                 echo "Error.User hasn't been added";
