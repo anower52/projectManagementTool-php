@@ -37,9 +37,6 @@ else {
                         <input type="password" name="password">
                     </div>
                     <br>
-                    <div>
-                        <label><input type="checkbox" name="password">Remember</label><br>
-                    </div>
                     <br><br>
                     <div>
                         <input type="submit" value="Login">

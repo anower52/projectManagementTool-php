@@ -1,3 +1,9 @@
+<?php
+include_once '../../Services/db_services.php';
+$id = $_GET['id'];
+$project = getOneProject($id);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +27,9 @@
         ?>
         <td>
             <fieldset>
-                <legend><b>ADD PROJECT</b></legend>
+                <legend><b>EDIT PROJECT</b></legend>
                 <br/>
-                <form action="storeProject.php" method="post">
+                <form action="updateProject.php" method="post">
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="100"></td>
@@ -34,14 +40,14 @@
                         <tr>
                             <td>Project Name</td>
                             <td>:</td>
-                            <td><input name="projectName" type="text" value=""></td>
+                            <td><input name="projectName" type="text" value="<?php echo $project['Name'] ?>"></td>
                             <td></td>
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>
                         <tr>
                             <td>Code Name</td>
                             <td>:</td>
-                            <td><input name="codeName" type="text" value=""></td>
+                            <td><input name="codeName" type="text" value="<?php echo $project['Code-Name'] ?>"></td>
                             <td></td>
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>
@@ -49,7 +55,7 @@
                             <td>Description</td>
                             <td>:</td>
                             <td>
-                                <textarea cols="30" role="5" name="description"></textarea>
+                                <textarea cols="30" role="5" name="description"><?php echo $project['Description'] ?></textarea>
                             </td>
                             <td></td>
                         </tr>
@@ -58,7 +64,7 @@
                             <td valign="top">Possible Start Date</td>
                             <td valign="top">:</td>
                             <td>
-                                <input name="psd" type="text" value="" id="psd" onchange="dateDifference()">
+                                <input name="psd" type="text" value="<?php echo $project['Start-Date'] ?>" id="psd" onchange="dateDifference()">
                             </td>
                             <td></td>
                         </tr>
@@ -67,7 +73,7 @@
                             <td valign="top">Possible End Date</td>
                             <td valign="top">:</td>
                             <td>
-                                <input name="ped" id="ped" type="text" value="" onchange="dateDifference()">
+                                <input name="ped" id="ped" type="text" value="<?php echo $project['End-Date'] ?>" onchange="dateDifference()">
                             </td>
                             <td></td>
                         </tr>
@@ -75,7 +81,7 @@
                         <tr>
                             <td>Duration(Days)</td>
                             <td>:</td>
-                            <td><input name="duration" type="text" value="" id="duration"></td>
+                            <td><input name="duration" type="text" value="<?php echo $project['Duration'] ?>" id="duration"></td>
                             <td></td>
                         </tr>
 
@@ -84,15 +90,16 @@
                             <td>Status</td>
                             <td>:</td>
                             <td>
-                                <input type="radio" name="status" value="Not Started">Not Started<br>
-                                <input type="radio" name="status" value="Started">Started<br>
-                                <input type="radio" name="status" value="Completed">Completed<br>
-                                <input type="radio" name="status" value="Cancelled">Cancelled<br>
+                                <input type="radio" name="status" value="Not Started" <?php if ($project['Status'] == 'Not Started') echo 'checked'?>>Not Started<br>
+                                <input type="radio" name="status" value="Started" <?php if ($project['Status'] == 'Started') echo 'checked'?>>Started<br>
+                                <input type="radio" name="status" value="Completed" <?php if ($project['Status'] == 'Completed') echo 'checked'?>>Completed<br>
+                                <input type="radio" name="status" value="Cancelled" <?php if ($project['Status'] == 'Cancelled') echo 'checked'?>>Cancelled<br>
                             </td>
                             <td></td>
                         </tr>
                     </table>
                     <hr />
+                    <input type="hidden" name="id" value="<?php echo $id?>">
                     <input type="submit" value="ADD">
                     <a href="viewProject.php">Back to All Project</a>
                 </form>

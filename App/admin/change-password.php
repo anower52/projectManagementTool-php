@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     </table>
                     <hr />
                     <input type="submit" value="Update" />
-                    <a href="dashboard.php">Dashboard</a>
+                    <a href="all-user.php">All User</a>
                 </form>
             </fieldset>
         </td>

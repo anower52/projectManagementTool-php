@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.4.14
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2017 at 05:16 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.0.25
+-- Generation Time: Dec 27, 2017 at 10:23 PM
+-- Server version: 5.6.26
+-- PHP Version: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,11 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `assign-project`
 --
 
-CREATE TABLE `assign-project` (
+CREATE TABLE IF NOT EXISTS `assign-project` (
   `Id` int(150) NOT NULL,
   `Project-Id` int(150) NOT NULL,
   `User-Id` int(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `assign-project`
@@ -47,7 +45,12 @@ INSERT INTO `assign-project` (`Id`, `Project-Id`, `User-Id`) VALUES
 (8, 4, 10),
 (9, 4, 13),
 (10, 4, 14),
-(11, 7, 15);
+(11, 7, 15),
+(12, 7, 28),
+(13, 4, 18),
+(14, 6, 27),
+(15, 4, 28),
+(16, 7, 26);
 
 -- --------------------------------------------------------
 
@@ -55,23 +58,24 @@ INSERT INTO `assign-project` (`Id`, `Project-Id`, `User-Id`) VALUES
 -- Table structure for table `comments`
 --
 
-CREATE TABLE `comments` (
+CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL,
   `project_id` int(11) DEFAULT NULL,
   `task_id` int(11) NOT NULL,
   `commented_by` varchar(255) NOT NULL,
   `comment` varchar(512) DEFAULT NULL,
   `date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `project_id`, `task_id`, `commented_by`, `comment`, `date`) VALUES
-(2, 4, 6, 'Tipu', 'Hello Anower! Are you there?!!!!', '2017-12-26 23:03:33'),
-(3, 6, 3, 'Tipu', '', '2017-12-26 23:10:46'),
-(4, 4, 5, 'Tipu', 'require UI !! ', '2017-12-27 14:45:46');
+(5, 4, 8, 'anower hasan', 'From given Data ', '2017-12-27 22:09:58'),
+(6, 6, 9, 'mamun jishan', 'top bar some new feature added', '2017-12-27 22:18:24'),
+(7, 7, 10, 'Tofazzol Hossain Anik', 'nedded some picture in background', '2017-12-27 22:19:53'),
+(8, 7, 11, 'Omi', 'badly needed data from a police station', '2017-12-27 22:22:39');
 
 -- --------------------------------------------------------
 
@@ -79,13 +83,13 @@ INSERT INTO `comments` (`id`, `project_id`, `task_id`, `commented_by`, `comment`
 -- Table structure for table `log_in`
 --
 
-CREATE TABLE `log_in` (
+CREATE TABLE IF NOT EXISTS `log_in` (
   `Id` int(150) NOT NULL,
   `user_info_id` int(11) DEFAULT NULL,
   `UserName` varchar(150) NOT NULL,
   `Password` varchar(150) NOT NULL,
   `UserType` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `log_in`
@@ -104,7 +108,7 @@ INSERT INTO `log_in` (`Id`, `user_info_id`, `UserName`, `Password`, `UserType`) 
 -- Table structure for table `project-info`
 --
 
-CREATE TABLE `project-info` (
+CREATE TABLE IF NOT EXISTS `project-info` (
   `Id` int(150) NOT NULL,
   `Name` varchar(250) NOT NULL,
   `Code-Name` varchar(250) NOT NULL,
@@ -113,7 +117,7 @@ CREATE TABLE `project-info` (
   `Duration` int(150) NOT NULL,
   `Description` varchar(150) NOT NULL,
   `Status` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `project-info`
@@ -130,7 +134,7 @@ INSERT INTO `project-info` (`Id`, `Name`, `Code-Name`, `Start-Date`, `End-Date`,
 -- Table structure for table `task-assign`
 --
 
-CREATE TABLE `task-assign` (
+CREATE TABLE IF NOT EXISTS `task-assign` (
   `Id` int(150) NOT NULL,
   `Project-Id` int(150) NOT NULL,
   `GUser-Id` int(150) NOT NULL,
@@ -138,19 +142,17 @@ CREATE TABLE `task-assign` (
   `Description` varchar(250) NOT NULL,
   `Due-Date` date NOT NULL,
   `Priority` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `task-assign`
 --
 
 INSERT INTO `task-assign` (`Id`, `Project-Id`, `GUser-Id`, `RUser-Id`, `Description`, `Due-Date`, `Priority`) VALUES
-(1, 4, 6, 3, 'klh', '2017-12-18', 'High'),
-(2, 4, 6, 3, 'klh', '2017-12-18', 'High'),
-(3, 6, 7, 4, 'complete url', '2017-12-28', 'High'),
-(4, 7, 8, 8, 'jhgfdjf', '2017-12-25', 'Medium'),
-(5, 4, 8, 10, 'For Test!', '2017-12-31', 'Medium'),
-(6, 4, 8, 14, 'Login and Registration', '2017-12-30', 'High');
+(8, 4, 28, 18, 'Complete UI', '2017-12-31', 'High'),
+(9, 6, 28, 27, 'Complete Top Bar', '2017-12-30', 'Medium'),
+(10, 7, 28, 26, 'Add Pic In Background', '2017-12-31', 'Low'),
+(11, 7, 27, 28, 'add data in police station', '2017-12-31', 'High');
 
 -- --------------------------------------------------------
 
@@ -158,7 +160,7 @@ INSERT INTO `task-assign` (`Id`, `Project-Id`, `GUser-Id`, `RUser-Id`, `Descript
 -- Table structure for table `user_info`
 --
 
-CREATE TABLE `user_info` (
+CREATE TABLE IF NOT EXISTS `user_info` (
   `Id` int(150) NOT NULL,
   `Name` varchar(250) NOT NULL,
   `UserEmail` varchar(200) NOT NULL,
@@ -170,21 +172,18 @@ CREATE TABLE `user_info` (
   `Status` varchar(150) NOT NULL,
   `Gender` varchar(150) NOT NULL,
   `permission` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `user_info`
 --
 
 INSERT INTO `user_info` (`Id`, `Name`, `UserEmail`, `UserName`, `Password`, `userType`, `DoB`, `Designation`, `Status`, `Gender`, `permission`) VALUES
-(6, 'admin', 'admin@gmail.com', 'admin', 'ad', 'admin', '2017-12-20', 'admin', 'Active', 'Male', 0),
-(8, 'Tipu', 'tipu@email.com', 'tipu', '123', 'Project Manager', '2000-12-12', 'Project Manager', 'Active', 'Male', 1),
-(10, 'anower', 'anower@mail.com', 'anower', '123', 'Developer', '2017-12-20', 'Developer', 'Active', 'Male', 1),
-(11, 'Rizvee', 'rizbi@mail.com', 'rizbi', '123', 'Project Manager', '2017-12-13', 'Project Manager', 'Active', 'Male', 1),
-(13, 'alomgir hossain', 'alomgir@g.com', 'alomgir', '123', 'Project Manager', '2017-12-20', 'Project Manager', 'Active', 'Male', 1),
-(14, 'anik', 'anik@gmail.com', 'anik', '123', 'Project Manager', '2017-12-14', 'Project Manager', 'Active', 'Male', 1),
-(15, 'nayeem', 'nayeem@gmail.com', 'nayeem', '123', 'Project Manager', '2017-12-06', 'Project Manager', 'Active', 'Male', 1),
-(17, 'mahmud', 'mahmu@gmail.com', 'mahmud', '123', 'Project Manager', '2017-12-06', 'Project Manager', 'Active', 'Male', 1);
+(6, 'admin', 'admin@gmail.com', 'admin', 'admin', 'admin', '2017-12-20', 'admin', 'Active', 'Male', 0),
+(18, 'mamun jishan', 'mamun@gmail.com', 'mamun', 'mamun', 'Developer', '2017-12-07', 'Developer', 'Active', 'Male', 1),
+(26, 'Tofazzol Hossain Anik', 'anik@gmail.com', 'anik', 'anik', 'QA', '2017-12-13', 'QA', 'Active', 'Male', 1),
+(27, 'Omi', 'omi@gmail.com', 'omi', 'omi', 'QA', '2004-06-15', 'QA', 'Active', 'Male', 1),
+(28, 'anower hasan', 'anower.hasan@gmail.com', 'anower', 'anower', 'Project Manager', '2017-12-16', 'Project Manager', 'Active', 'Male', 1);
 
 --
 -- Indexes for dumped tables
@@ -237,39 +236,32 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `assign-project`
 --
 ALTER TABLE `assign-project`
-  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `log_in`
 --
 ALTER TABLE `log_in`
-  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `project-info`
 --
 ALTER TABLE `project-info`
-  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `task-assign`
 --
 ALTER TABLE `task-assign`
-  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-COMMIT;
-
+  MODIFY `Id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

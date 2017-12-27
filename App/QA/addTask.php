@@ -1,7 +1,6 @@
 <?php
 include_once '../../Services/db_services.php';
 $allProjects = getAllProjects();
-//$allUsers = getAllUsers();
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +26,9 @@ $allProjects = getAllProjects();
         ?>
         <td>
             <fieldset>
-                <legend><b>COMMENT</b></legend>
+                <legend><b>ADD TASK</b></legend>
                 <br/>
-                <form action="commentStore.php" method="post">
+                <form action="addTaskStore.php" method="post">
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="100"></td>
@@ -54,10 +53,10 @@ $allProjects = getAllProjects();
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>
                         <tr>
-                            <td>Select Task</td>
+                            <td>Assign To</td>
                             <td>:</td>
                             <td>
-                                <select name="taskId" id="taskId">
+                                <select name="userId" id="userId">
                                     <option></option>
                                 </select>
                             </td>
@@ -65,15 +64,38 @@ $allProjects = getAllProjects();
                         </tr>
                         <tr><td colspan="4"><hr /></td></tr>
                         <tr>
-                            <td>Comment</td>
+                            <td>Task Name</td>
                             <td>:</td>
-                            <td><input name="comment" type="text" value=""></td>
+                            <td><input type="text" name="description"></td>
+                            <td></td>
+                        </tr>
+                        <tr><td colspan="4"><hr /></td></tr>
+                        <tr>
+                            <td valign="top">Due Date</td>
+                            <td valign="top">:</td>
+                            <td>
+                                <input name="due_date" type="text" value="" id="due_date">
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr><td colspan="4"><hr /></td></tr>
+                        <tr>
+                            <td>Priority</td>
+                            <td>:</td>
+                            <td>
+                                <select name="priority">
+                                    <option></option>
+                                    <option >High</option>
+                                    <option>Medium</option>
+                                    <option>Low</option>
+                                </select>
+                            </td>
                             <td></td>
                         </tr>
                     </table>
                     <hr />
-                    <input type="submit" value="SAVE">
-                    <a href="viewComments.php">Back to All Comments</a>
+                    <input type="submit" value="ADD">
+                    <a href="viewTask.php">Back to Task</a>
                 </form>
             </fieldset>
         </td>
@@ -97,15 +119,15 @@ $allProjects = getAllProjects();
             type :'POST',
             dataType:'json',
             data : {projectId : projectId},
-            url : 'ajax/getTaskData.php',
+            url : 'ajax/getUserData.php',
             success : function(result){
-                console.log(result);
-                $('#taskId').html('');
-                $('#taskId').append('<option></option>');
+console.log(result);
+                $('#userId').html('');
+                $('#userId').append('<option></option>');
                 result.forEach(function(t) {
                     // $('#item') refers to the EMPTY select list
                     // the .append means add to the object refered to above
-                    $('#taskId').append('<option value="'+t['Id']+'">'+t['Description']+'</option>');
+                    $('#userId').append('<option value="'+t['Id']+'">'+t['Name']+'</option>');
                 });
             }
         })
@@ -113,4 +135,5 @@ $allProjects = getAllProjects();
     });
 
 </script>
-</html
+
+</html>

@@ -32,8 +32,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         $error = "Your Login Name or Password is invalid";
         echo '<h3 align="center" style="color:red">'.$error.'</h3>';
+
+
     }
 
 }
+
 
 ?>

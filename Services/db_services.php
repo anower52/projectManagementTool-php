@@ -209,8 +209,15 @@ function commentStore($comment=''){
     return $result;
 }
 
-function viewComments($id)
-{
+function getAllComment(){
+    $sql = "SELECT * FROM `comments` ORDER BY Id DESC";
+//    return $sql;
+    $result = executeSQL($sql);
 
+    $projects = array();
+    while($row = mysqli_fetch_assoc($result)){
+        $projects[] = $row;
+    }
+
+    return $projects;
 }
-

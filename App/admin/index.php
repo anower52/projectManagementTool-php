@@ -17,8 +17,12 @@
         <?php
         include "template/left-sidebar.php";
         ?>
+        <?php
+        include "template/recent.php";
+        ?>
 
     </tr>
+
 <?php
 include "template/footer.php";
 ?>
