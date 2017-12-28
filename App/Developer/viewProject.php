@@ -73,8 +73,7 @@ $allProjects = getAllProjects();
                         ?>
                         </td>
                         <td width="40"><a href="details.php?id=<?php echo $project['Id']?>">Details</a></td>
-                        <td width="30"><a href="editProject.php?id=<?php echo $project['Id']?>">Edit</a></td>
-                        <td width="45"><a href="deleteProject.php?id=<?php echo $project['Id']?>" onclick="return confirm('Are you sure you want to delete this project?');">Delete</a></td>
+                        
                     </tr>
                    <?php } ?>
                 </table><br/>
