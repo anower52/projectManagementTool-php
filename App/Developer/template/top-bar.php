@@ -4,6 +4,9 @@ $user = $_SESSION['username'];
 ?>
 <td><h2>Project Management</h2></td>
 <td align="right">
+    <a href="index.php">Home</a>
+</td>
+<td align="right">
     <?php echo $user?>
 </td>
 <td align="right" width="50">

@@ -20,7 +20,15 @@ else {
 
 
     <table width="400" frame="box" cellpadding="0" cellspacing="0" align="center">
+       <tr>
 
+           <?php
+        if (isset($_SESSION['Message']) && !empty($_SESSION['Message'])){
+            echo '<h2 style="color: green;">'.$_SESSION['Message'].'</h2>';
+            unset($_SESSION['Message']);
+        }
+        ?>
+       </tr>
         <tr>
             <td></td>
             <td width="100%" align="center">

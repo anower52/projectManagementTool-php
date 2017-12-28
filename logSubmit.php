@@ -30,10 +30,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     else{
 
-        $error = "Your Login Name or Password is invalid";
-        echo '<h3 align="center" style="color:red">'.$error.'</h3>';
-
-
+        $_SESSION['Message'] = 'User Name Or Password Invalid.';
+        header('Location:index.php');
     }
 
 }
